@@ -109,7 +109,22 @@ function AppContent() {
                       overflowY: 'auto', 
                       p: 0,
                     }}>
-                      {selectedTableData.orders.map((order) => (
+                      {Object.values(
+                        selectedTableData.orders.reduce((acc, order) => {
+                          const key = `${order.name}-${order.price}`;
+                          if (!acc[key]) {
+                            acc[key] = {
+                              ...order,
+                              count: 1,
+                              totalPrice: order.price
+                            };
+                          } else {
+                            acc[key].count += 1;
+                            acc[key].totalPrice = acc[key].price * acc[key].count;
+                          }
+                          return acc;
+                        }, {})
+                      ).map((order) => (
                         <ListItem 
                           key={order.orderId}
                           sx={{ 
@@ -118,8 +133,8 @@ function AppContent() {
                           }}
                         >
                           <ListItemText
-                            primary={order.name}
-                            secondary={`${order.price} TL`}
+                            primary={`${order.name} ${order.count > 1 ? `x${order.count}` : ''}`}
+                            secondary={`${order.totalPrice} TL`}
                             primaryTypographyProps={{
                               fontSize: '0.9rem',
                               fontWeight: 500
