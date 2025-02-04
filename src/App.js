@@ -398,22 +398,6 @@ function AppContent() {
 
         {renderContent()}
       </Container>
-
-      {/* Footer */}
-      <Box 
-        component="footer" 
-        sx={{ 
-          py: 2, 
-          bgcolor: '#1e1e1e', 
-          color: 'white',
-          mt: 'auto',
-          textAlign: 'center'
-        }}
-      >
-        <Typography variant="body2" sx={{ opacity: 0.8 }}>
-          © 2024 Furkan Salkın
-        </Typography>
-      </Box>
     </Box>
   );
 }
