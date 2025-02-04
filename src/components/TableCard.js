@@ -44,34 +44,31 @@ const TableCard = ({ table, isSelected }) => {
         <Typography variant="h6" component="div">
           Masa {table.id}
         </Typography>
-        <Chip 
-          label={isActive ? 'Aktif' : 'Boş'} 
-          size="small"
-          color={isActive ? 'success' : 'default'}
-          variant={isActive ? "filled" : "outlined"}
-          sx={{
-            fontWeight: isActive ? 600 : 400,
-            fontSize: isActive ? '0.9rem' : '0.8rem',
-            px: isActive ? 2 : 1,
-            py: isActive ? 0.5 : 0,
-            bgcolor: isActive ? '#2e7d32' : 'transparent',
-            color: isActive ? 'white' : 'inherit',
-            '& .MuiChip-label': {
-              px: isActive ? 1 : 0.5
-            }
-          }}
-        />
-        {isActive && (
+        {isActive ? (
           <Typography 
             variant="subtitle1" 
             sx={{ 
-              mt: 1, 
               fontWeight: 600,
-              color: '#2e7d32'
+              color: '#2e7d32',
+              bgcolor: '#e8f5e9',
+              px: 2,
+              py: 0.5,
+              borderRadius: 2
             }}
           >
             {table.total} TL
           </Typography>
+        ) : (
+          <Chip 
+            label="Boş"
+            size="small"
+            color="default"
+            variant="outlined"
+            sx={{
+              fontWeight: 400,
+              fontSize: '0.8rem'
+            }}
+          />
         )}
       </CardContent>
     </Card>

@@ -50,6 +50,15 @@ function AppContent() {
 
   const handleTableClick = (tableId) => {
     setSelectedTable(tableId);
+    // Masanın aktif olup olmadığını kontrol et
+    const selectedTable = tables.find(t => t.id === tableId);
+    if (selectedTable.orders.length > 0) {
+      // Aktif masa ise detayları aç
+      setExpandedSection('details');
+    } else {
+      // Boş masa ise menüyü aç
+      setExpandedSection('menu');
+    }
     if (isMobile) setActiveTab(1);
   };
 
