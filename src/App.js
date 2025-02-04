@@ -257,14 +257,29 @@ function AppContent() {
                 <Typography variant="h6">Masa {selectedTableData.id} - Detaylar</Typography>
               </Box>
               <List sx={{ flex: 1, overflowY: 'auto', p: 0 }}>
-                {selectedTableData.orders.map((order) => (
+                {Object.values(
+                  selectedTableData.orders.reduce((acc, order) => {
+                    const key = `${order.name}-${order.price}`;
+                    if (!acc[key]) {
+                      acc[key] = {
+                        ...order,
+                        count: 1,
+                        totalPrice: order.price
+                      };
+                    } else {
+                      acc[key].count += 1;
+                      acc[key].totalPrice = acc[key].price * acc[key].count;
+                    }
+                    return acc;
+                  }, {})
+                ).map((order) => (
                   <ListItem 
                     key={order.orderId}
                     sx={{ borderBottom: '1px solid #f0f0f0' }}
                   >
                     <ListItemText
-                      primary={order.name}
-                      secondary={`${order.price} TL`}
+                      primary={`${order.name} ${order.count > 1 ? `x${order.count}` : ''}`}
+                      secondary={`${order.totalPrice} TL`}
                       primaryTypographyProps={{
                         fontSize: '1rem',
                         fontWeight: 500
