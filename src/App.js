@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
-import { Container, Grid, CssBaseline, ToggleButton, ToggleButtonGroup, Box, Typography, Paper, AppBar, Toolbar, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Button, Divider, useTheme, useMediaQuery, Tabs, Tab } from '@mui/material';
+import { Container, Grid, CssBaseline, ToggleButton, ToggleButtonGroup, Box, Typography, Paper, AppBar, Toolbar, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Button, useTheme, useMediaQuery, Tabs, Tab } from '@mui/material';
 import { store } from './store/store';
 import TableCard from './components/TableCard';
 import MenuList from './components/MenuList';
@@ -398,6 +398,22 @@ function AppContent() {
 
         {renderContent()}
       </Container>
+
+      {/* Footer */}
+      <Box 
+        component="footer" 
+        sx={{ 
+          py: 2, 
+          bgcolor: '#1e1e1e', 
+          color: 'white',
+          mt: 'auto',
+          textAlign: 'center'
+        }}
+      >
+        <Typography variant="body2" sx={{ opacity: 0.8 }}>
+          © 2024 Furkan Salkın
+        </Typography>
+      </Box>
     </Box>
   );
 }
