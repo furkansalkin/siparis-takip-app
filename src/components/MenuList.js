@@ -39,9 +39,14 @@ const MenuList = ({ selectedTable }) => {
             >
               <ListItemText
                 primary={item.name}
+                secondary={`${item.price} TL`}
                 primaryTypographyProps={{
                   fontWeight: 500,
                   fontSize: '0.95rem'
+                }}
+                secondaryTypographyProps={{
+                  color: 'text.primary',
+                  fontWeight: 500
                 }}
               />
               <ListItemSecondaryAction>
@@ -51,6 +56,7 @@ const MenuList = ({ selectedTable }) => {
                   disabled={!selectedTable}
                   sx={{
                     color: selectedTable ? '#1e1e1e' : '#ccc',
+                    padding: '12px',
                     '&:hover': {
                       bgcolor: 'rgba(0, 0, 0, 0.05)',
                       color: selectedTable ? '#000' : '#ccc'
@@ -60,7 +66,7 @@ const MenuList = ({ selectedTable }) => {
                     }
                   }}
                 >
-                  <AddCircleIcon />
+                  <AddCircleIcon sx={{ fontSize: 28 }} />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
