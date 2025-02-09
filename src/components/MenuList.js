@@ -29,7 +29,7 @@ const MenuList = ({ selectedTable }) => {
           <React.Fragment key={item.id}>
             <ListItem 
               sx={{ 
-                py: 2,
+                py: 1,
                 px: 2,
                 transition: 'all 0.2s ease',
                 '&:hover': {
@@ -39,28 +39,24 @@ const MenuList = ({ selectedTable }) => {
             >
               <ListItemText
                 primary={item.name}
-                secondary={`${item.price} TL`}
                 primaryTypographyProps={{
                   fontWeight: 500,
                   fontSize: '0.95rem'
                 }}
-                secondaryTypographyProps={{
-                  color: 'text.primary',
-                  fontWeight: 500
-                }}
               />
-              <ListItemSecondaryAction>
+              <ListItemSecondaryAction sx={{ right: 32 }}>
                 <IconButton
                   edge="end"
                   onClick={() => handleAddOrder(item)}
                   disabled={!selectedTable}
                   sx={{
                     color: selectedTable ? '#1e1e1e' : '#ccc',
-                    padding: '8px 16px',
-                    borderRadius: '8px',
+                    padding: '6px',
+                    borderRadius: '4px',
                     border: '1px solid',
                     borderColor: selectedTable ? '#1e1e1e' : '#ccc',
-                    minWidth: '80px',
+                    width: '36px',
+                    height: '28px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -74,8 +70,7 @@ const MenuList = ({ selectedTable }) => {
                     }
                   }}
                 >
-                  <AddCircleIcon sx={{ fontSize: 24, mr: 0.5 }} />
-                  Ekle
+                  <AddCircleIcon sx={{ fontSize: 18 }} />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
