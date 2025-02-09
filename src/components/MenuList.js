@@ -56,17 +56,26 @@ const MenuList = ({ selectedTable }) => {
                   disabled={!selectedTable}
                   sx={{
                     color: selectedTable ? '#1e1e1e' : '#ccc',
-                    padding: '12px',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    border: '1px solid',
+                    borderColor: selectedTable ? '#1e1e1e' : '#ccc',
+                    minWidth: '80px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     '&:hover': {
-                      bgcolor: 'rgba(0, 0, 0, 0.05)',
-                      color: selectedTable ? '#000' : '#ccc'
+                      bgcolor: selectedTable ? '#1e1e1e' : 'transparent',
+                      color: selectedTable ? '#fff' : '#ccc'
                     },
                     '&.Mui-disabled': {
-                      opacity: 0.5
+                      opacity: 0.5,
+                      border: '1px solid #ccc'
                     }
                   }}
                 >
-                  <AddCircleIcon sx={{ fontSize: 28 }} />
+                  <AddCircleIcon sx={{ fontSize: 24, mr: 0.5 }} />
+                  Ekle
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
